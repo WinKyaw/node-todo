@@ -61,10 +61,14 @@ module.exports = function(app) {
             _id: req.params.id
         }, function (result) {
            
-
-            getTodos(res);
+        	res.send(reslut);
+            
         });
     });
+
+       app.put('/api/todos/:id/click', function(){
+
+       })
 
 	// application -------------------------------------------------------------
 	app.get('*', function(req, res) {

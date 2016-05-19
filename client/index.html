@@ -12,12 +12,7 @@
 <!-- SCROLLS -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><!-- load bootstrap -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<style>
-html                    { overflow-y:scroll; }
-body                    { padding-top:50px; }
-#todo-list              { margin-bottom:30px; }
-#todo-form              { margin-bottom:50px; }
-</style>
+
 
 <!-- SPELLS -->
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
@@ -53,16 +48,16 @@ body                    { padding-top:50px; }
                             <s ng-if="todo.completed">{{ todo.text }}</s>
                             <span ng-if="!todo.completed">{{ todo.text }}</span>
                         </label>
-                        <button class="pull-right" ng-click="delete(todo,
-                            $index)">Delete</button>
+                        <a class="pull-right" ng-click="delete(todo,
+                            $index)">Delete</a>
 
-                        <button class="pull-right" ng-if="!todo.snoozed &&
+                        <a class="pull-right" ng-if="!todo.snoozed &&
                             !todo.completed" ng-click="snooze(todo,
-                            $index)">Snooze</button>
-                        <button class="pull-right" ng-if="todo.snoozed &&
+                            $index)">Snooze</a>
+                        <a class="pull-right" ng-if="todo.snoozed &&
                             !todo.completed"
                         ng-click="unsnooze(todo,
-                            $index)">Unsnooze</button>
+                            $index)">Unsnooze</a>
                     </div> 
             
             </div>
