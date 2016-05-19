@@ -21,6 +21,7 @@ module.exports = function(app) {
 		getTodos(res);
 	});
 
+        
 	// create todo and send back all todos after creation
 	app.post('/api/todos', function(req, res) {
 
@@ -38,8 +39,35 @@ module.exports = function(app) {
 
 	});
 
+        app.post('/api/todos/:id', function(req, res) {
+            Todo.findById(req.params['id'], function(err, todoItem) {
+                if (!todoItem || err) res.send(err);
+                else {
+                    if (req.body['completed']) {
+                        todoItem.completed = true;
+                    } else {
+                        todoItem.completed = false;
+                    }
+
+                    todoItem.save();
+
+                    res.send( { success: true });
+                }
+            });
+        });
+
+       app.delete('/api/todos/:id', function (req, res) {
+        Todo.remove({
+            _id: req.params.id
+        }, function (result) {
+           
+
+            getTodos(res);
+        });
+    });
+
 	// application -------------------------------------------------------------
 	app.get('*', function(req, res) {
-		res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+		res.sendfile('./client/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 	});
 };

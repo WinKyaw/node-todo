@@ -35,4 +35,13 @@ angular.module('todoController', [])
 			}
 		};
 
+		var check = true;
+		$scope.deleteTodo = function(id) {
+			$scope.loading = check;
+			Todos.delete(id).success(function(data) {
+					check = false;
+					$scope.loading = check;
+					$scope.todos = data;
+				});
+		};
 	}]);
